@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>サイドFIRE計算機｜副収入で何年早くFIREできるか</title>
+<meta name="description" content="FIRE後の副収入から、サイドFIREの目標額と到達年齢を計算し、完全FIREと比べる無料ツールです。">
+<meta property="og:title" content="サイドFIRE計算機｜副収入で何年早くFIREできるか">
+<meta property="og:description" content="FIRE後の副収入から、サイドFIREの目標額と到達年齢を計算し、完全FIREと比べる無料ツールです。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="site-head"><div class="in">
+  <a class="brand" href="index.html">FIRE到達シミュレーター</a>
+  <nav><a href="index.html">FIRE計算</a><a href="side-fire-calc.html">サイドFIRE計算</a><a href="articles/index.html">解説記事</a></nav>
+</div></div>
+<div class="wrap">
+  <header>
+    <h1>サイドFIRE計算機</h1>
+    <p>FIRE後も少し働いて収入を得る場合、目標額がいくら下がり、到達が何年早まるかを計算します。完全FIREとの差を並べて比べられます。</p>
+  </header>
+  <div class="grid">
+    <section class="panel" aria-labelledby="in-h">
+      <span class="sample">入力例（ご自身の数字に変えてください）</span>
+      <h2 id="in-h" style="font-size:16px;margin:0 0 12px">あなたの条件</h2>
+      <form id="f" novalidate>
+        <label for="income">FIRE後の副収入（手取り）
+          <span class="field"><input id="income" type="number" inputmode="decimal" value="5" min="0" step="1"><span class="unit">万円/月</span></span></label>
+        <label for="age">現在の年齢
+          <span class="field"><input id="age" type="number" inputmode="numeric" value="30" min="15" max="80"><span class="unit">歳</span></span></label>
+        <label for="asset">現在の金融資産
+          <span class="field"><input id="asset" type="number" inputmode="numeric" value="800" min="0" step="10"><span class="unit">万円</span></span></label>
+        <label for="monthly">毎月の積立額
+          <span class="field"><input id="monthly" type="number" inputmode="decimal" value="10" min="0" step="1"><span class="unit">万円/月</span></span></label>
+        <label for="bonus">ボーナス等の年間追加投資
+          <span class="field"><input id="bonus" type="number" inputmode="numeric" value="40" min="0" step="10"><span class="unit">万円/年</span></span></label>
+        <label for="ret">想定利回り（インフレ控除後）
+          <span class="field"><input id="ret" type="number" inputmode="decimal" value="4" min="0" max="15" step="0.1"><span class="unit">%/年</span></span></label>
+        <label for="cost">FIRE後の年間生活費
+          <span class="field"><input id="cost" type="number" inputmode="numeric" value="300" min="1" step="10"><span class="unit">万円/年</span></span></label>
+        <label for="swr">取り崩し率
+          <span class="field"><input id="swr" type="number" inputmode="decimal" value="4" min="1" max="10" step="0.1"><span class="unit">%/年</span></span></label>
+      </form>
+    </section>
+    <section class="panel result" aria-live="polite">
+      <div class="headline" id="headline"></div>
+      <dl class="stats">
+        <div class="stat goal"><dt>サイドFIREの目標額</dt><dd id="s-goal"></dd></div>
+        <div class="stat"><dt>完全FIREの目標額</dt><dd id="s-full"></dd></div>
+        <div class="stat"><dt>早まる年数</dt><dd id="s-diff"></dd></div>
+      </dl>
+      <h3 style="font-size:15px;margin:4px 0 0">副収入ごとの到達年齢</h3>
+      <div class="chart-box"><svg id="chart" viewBox="0 0 640 260" role="img" aria-label="副収入ごとのFIRE到達年齢の棒グラフ"></svg></div>
+      <p class="note">ほかの条件はそのままで、副収入だけを変えた場合の到達年齢です。濃い棒が今の入力値です。</p>
+    </section>
+  </div>
+  <section class="article" style="padding-inline:0;max-width:none">
+    <h2>計算の考え方</h2>
+    <p>サイドFIREで資産から取り崩すのは「年間生活費 − 副収入×12」です。目標額はその額を取り崩し率で割って求めます。副収入が一生続くとは限らないため、収入が止まったときの備えも考えておくと安心です。</p>
+    <ul class="list">
+      <li><a href="articles/side-fire-income.html">サイドFIREは月いくら稼げばいい？副収入別の到達年齢早見表</a></li>
+      <li><a href="articles/side-income-stop.html">サイドFIREの副収入が途中で止まったら？取り崩し率で見るリスク</a></li>
+      <li><a href="articles/fire-types.html">サイドFIRE・バリスタFIRE・完全FIREの違い</a></li>
+    </ul>
+  </section>
+  <footer>計算は月次複利の単純なモデルです。税金・社会保険料・年金・相場の変動は含めていません。副収入は手取りで入力してください。投資判断はご自身の責任で行ってください。</footer>
+</div>
+<div class="site-foot"><div class="in">
+  <a href="about.html">運営者情報</a><a href="privacy.html">プライバシーポリシー</a>
+  <span>© 2026 FIRE到達シミュレーター</span>
+</div></div>
+<script src="sidecalc.js"></script>
+</body>
+</html>
