@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FIRE到達シミュレーター｜何歳でFIREできるかを計算</title>
+<meta name="description" content="今の資産・毎月の積立・想定利回り・FIRE後の生活費から、FIREに到達する年齢と資産の推移を計算する無料ツールです。">
+<meta property="og:title" content="FIRE到達シミュレーター｜何歳でFIREできるかを計算">
+<meta property="og:description" content="今の資産・毎月の積立・想定利回り・FIRE後の生活費から、FIREに到達する年齢と資産の推移を計算する無料ツールです。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="site-head"><div class="in">
+  <a class="brand" href="index.html">FIRE到達シミュレーター</a>
+  <nav><a href="index.html">計算ツール</a><a href="articles/index.html">解説記事</a></nav>
+</div></div>
+<div class="wrap">
+  <header>
+    <h1>FIRE到達シミュレーター</h1>
+    <p>いまの資産と毎月の積立から、「生活費を資産の取り崩しだけでまかなえる日」がいつ来るかを計算します。</p>
+  </header>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="in-h">
+      <span class="sample">入力例（ご自身の数字に変えてください）</span>
+      <h2 id="in-h" style="font-size:16px;margin:0 0 12px">あなたの条件</h2>
+      <form id="f" novalidate>
+        <label for="age">現在の年齢
+          <span class="field"><input id="age" type="number" inputmode="numeric" value="30" min="15" max="80"><span class="unit">歳</span></span></label>
+        <label for="asset">現在の金融資産
+          <span class="field"><input id="asset" type="number" inputmode="numeric" value="800" min="0" step="10"><span class="unit">万円</span></span></label>
+        <label for="monthly">毎月の積立額
+          <span class="field"><input id="monthly" type="number" inputmode="decimal" value="10" min="0" step="1"><span class="unit">万円/月</span></span></label>
+        <label for="bonus">ボーナス等の年間追加投資
+          <span class="field"><input id="bonus" type="number" inputmode="numeric" value="40" min="0" step="10"><span class="unit">万円/年</span></span></label>
+        <label for="ret">想定利回り（インフレ控除後）
+          <span class="field"><input id="ret" type="number" inputmode="decimal" value="4" min="0" max="15" step="0.1"><span class="unit">%/年</span></span></label>
+        <label for="cost">FIRE後の年間生活費
+          <span class="field"><input id="cost" type="number" inputmode="numeric" value="300" min="1" step="10"><span class="unit">万円/年</span></span></label>
+        <label for="swr">取り崩し率
+          <span class="field"><input id="swr" type="number" inputmode="decimal" value="4" min="1" max="10" step="0.1"><span class="unit">%/年</span></span></label>
+        <p class="note">取り崩し率4%は米国の過去データに基づく目安（いわゆる4%ルール）です。慎重に見るなら3〜3.5%で試してください。</p>
+      </form>
+    </section>
+
+    <section class="panel result" aria-live="polite">
+      <div class="headline" id="headline"></div>
+      <dl class="stats">
+        <div class="stat goal"><dt>必要な資産（目標額）</dt><dd id="s-goal"></dd></div>
+        <div class="stat"><dt>到達までの年数</dt><dd id="s-years"></dd></div>
+        <div class="stat"><dt>うち運用益の割合</dt><dd id="s-gain"></dd></div>
+      </dl>
+      <div class="chart-box"><svg id="chart" viewBox="0 0 640 300" role="img" aria-label="資産推移と目標額のグラフ"></svg></div>
+      <div class="legend"><span><i style="background:var(--ai)"></i>資産残高</span><span><i style="background:var(--goal)"></i>目標額</span><span><i style="background:var(--muted);opacity:.5"></i>元本（積み立てた額）</span></div>
+      <div class="tips" id="tips"></div>
+    </section>
+  </div>
+
+  <section class="article" style="padding-inline:0;max-width:none"><h2>計算の考え方</h2><p>目標額は「FIRE後の年間生活費 ÷ 取り崩し率」で求めています。資産は毎月の積立と年1回の追加投資を加えながら、想定利回りで月ごとに複利で増える前提です。くわしくは<a href="articles/index.html">解説記事</a>をご覧ください。</p><ul class="list"><li><a href="articles/four-percent-rule.html">4%ルールとは？FIREの目標額が「生活費の25倍」になる理由</a></li>
+<li><a href="articles/target-amount.html">FIREに必要な資産額の計算方法：生活費の見積もりから始める</a></li>
+<li><a href="articles/real-return.html">想定利回りは「実質」で入れる：インフレを引いた利回りの考え方</a></li></ul></section>
+  <footer>
+    計算は月次複利の単純なモデルです。税金・社会保険料・年金・相場の変動は含めていません。利回りはインフレ控除後の実質値として入れると、結果を今のお金の価値で読めます。投資判断はご自身の責任で行ってください。
+  </footer>
+</div>
+
+
+<div class="site-foot"><div class="in">
+  <a href="about.html">運営者情報</a><a href="privacy.html">プライバシーポリシー</a>
+  <span>© 2026 FIRE到達シミュレーター</span>
+</div></div>
+<script src="calc.js"></script>
+</body>
+</html>
